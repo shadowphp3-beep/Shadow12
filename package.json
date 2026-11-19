@@ -1,0 +1,32 @@
+{
+  "name": "shadow-admin",
+  "productName": "Shadow Admin",
+  "version": "1.0.0",
+  "description": "Shadow Admin - desktop shell for the Shadow site admin panel",
+  "main": "main.js",
+  "author": "Shadow",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable --x64"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.shadow.admin",
+    "productName": "Shadow Admin",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "renderer/**/*", "config.json", "package.json"],
+    "extraResources": [{ "from": "config.json", "to": "config.json" }],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": ["nsis", "portable"],
+      "artifactName": "ShadowAdmin-${version}-${target}.${ext}"
+    },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "perMachine": false }
+  }
+}

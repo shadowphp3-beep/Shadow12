@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="shadow_bg">#0B0B12</color>
+    <color name="shadow_accent">#7C5CFF</color>
+    <color name="shadow_text">#ECEAF5</color>
+</resources>

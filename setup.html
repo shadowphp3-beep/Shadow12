@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>Shadow Admin</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self'">
+<link rel="stylesheet" href="app.css"></head>
+<body><main class="card">
+<h1>إعداد الاتصال بالموقع</h1>
+<p>اكتب عنوان موقعك (HTTPS). لا يُحفظ أي سر أو كلمة مرور هنا؛ تسجيل الدخول يتم على لوحة الموقع نفسها.</p>
+<input id="url" type="url" dir="ltr" placeholder="https://your-site.example" autocomplete="off">
+<p id="msg" class="muted"></p>
+<div class="row"><button id="save">حفظ وفتح لوحة التحكم</button></div>
+</main><script src="setup.js"></script></body></html>

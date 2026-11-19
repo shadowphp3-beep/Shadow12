@@ -1,0 +1,49 @@
+name: Build Shadow apps
+
+on:
+  workflow_dispatch:
+
+jobs:
+  admin-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Write server URL into config.json
+        shell: bash
+        working-directory: Source_Code/Admin
+        env:
+          SERVER_URL: ${{ vars.SHADOW_SERVER_URL }}
+        run: |
+          node -e "require('fs').writeFileSync('config.json', JSON.stringify({serverUrl: process.env.SERVER_URL || ''}))"
+      - name: Install and build
+        working-directory: Source_Code/Admin
+        run: |
+          npm install
+          npm run dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ShadowAdmin-EXE
+          path: |
+            Source_Code/Admin/dist/*.exe
+
+  store-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.7
+      - name: Build debug APK
+        working-directory: Source_Code/Android
+        run: gradle assembleDebug -PSHADOW_SERVER_URL="${{ vars.SHADOW_SERVER_URL }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ShadowStore-APK
+          path: Source_Code/Android/app/build/outputs/apk/debug/*.apk

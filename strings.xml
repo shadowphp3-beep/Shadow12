@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shadow Store</string>
+    <string name="offline_title">لا يوجد اتصال بالإنترنت</string>
+    <string name="offline_body">تعذّر الوصول إلى الموقع. تحقق من الاتصال ثم أعد المحاولة.</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="blocked_admin">هذه الصفحة غير متاحة في تطبيق العملاء.</string>
+    <string name="file_chooser_title">اختر ملفًا</string>
+</resources>
